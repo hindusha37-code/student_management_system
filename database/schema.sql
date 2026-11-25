@@ -60,6 +60,24 @@ CREATE TABLE IF NOT EXISTS students (
 );
 
 
+
+CREATE TABLE login_activity (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    login_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    logout_time DATETIME NULL,
+
+    CONSTRAINT fk_login_activity_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE,
+
+    INDEX idx_login_user (user_id),
+    INDEX idx_login_time (login_time)
+);
+
+
+
 -- ============================================================
 -- DATABASE SCHEMA - VERSION 1.0 COMPLETE
 -- ============================================================

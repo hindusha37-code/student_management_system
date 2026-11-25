@@ -46,9 +46,7 @@
 .university-logo {
     height: 68px;
     width: auto;
-
     object-fit: contain;
-
     flex-shrink: 0;
 }
 

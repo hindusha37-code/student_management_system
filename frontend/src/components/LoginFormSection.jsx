@@ -1,9 +1,12 @@
+
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 function LoginFormSection({ onSubmit, loading, error }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -17,13 +20,9 @@ function LoginFormSection({ onSubmit, loading, error }) {
 
                 <div className="login-heading">
 
-                    <span>
-                        SIGN IN
-                    </span>
+                    <span>SIGN IN</span>
 
-                    <h2>
-                        Welcome back
-                    </h2>
+                    <h2>Welcome back</h2>
 
                     <p>
                         Sign in to access your account.
@@ -31,13 +30,11 @@ function LoginFormSection({ onSubmit, loading, error }) {
 
                 </div>
 
-
                 {error && (
                     <div className="login-error">
                         {error}
                     </div>
                 )}
-
 
                 <form
                     className="login-form"
@@ -65,28 +62,50 @@ function LoginFormSection({ onSubmit, loading, error }) {
 
                     </div>
 
-
                     <div className="form-group">
 
                         <label htmlFor="password">
                             Password
                         </label>
 
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(event) =>
-                                setPassword(event.target.value)
-                            }
-                            placeholder="Enter your password"
-                            autoComplete="current-password"
-                            disabled={loading}
-                            required
-                        />
+                        <div className="password-input-wrapper">
+
+                            <input
+                                id="password"
+                                type={showPassword ? "text" : "password"}
+                                value={password}
+                                onChange={(event) =>
+                                    setPassword(event.target.value)
+                                }
+                                placeholder="Enter your password"
+                                autoComplete="current-password"
+                                disabled={loading}
+                                required
+                            />
+
+                            <button
+                                type="button"
+                                className="password-toggle-button"
+                                onClick={() =>
+                                    setShowPassword(!showPassword)
+                                }
+                                disabled={loading}
+                                aria-label={
+                                    showPassword
+                                        ? "Hide password"
+                                        : "Show password"
+                                }
+                            >
+                                {showPassword ? (
+                                    <EyeOff size={20} />
+                                ) : (
+                                    <Eye size={20} />
+                                )}
+                            </button>
+
+                        </div>
 
                     </div>
-
 
                     <button
                         type="submit"

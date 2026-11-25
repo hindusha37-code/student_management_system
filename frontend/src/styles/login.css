@@ -206,6 +206,59 @@
     gap: 7px;
 }
 
+
+/* Password Input with Eye Toggle */
+
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding: 13px 45px 13px 14px;
+}
+
+.password-toggle-button {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    padding: 5px;
+
+    transition: color 0.2s ease;
+}
+
+.password-toggle-button:hover {
+    color: #2563eb;
+}
+
+.password-toggle-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.password-toggle-button:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+
 /* Input Labels */
 
 .form-group label {
